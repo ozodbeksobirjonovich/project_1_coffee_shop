@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smokey Brand Coffee</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5e6d3;
+        }
+        
+        .browser-frame {
+            max-width: 1200px;
+            margin: 20px auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            background-color: #1a1a1a;
+        }
+        
+        .browser-top {
+            display: flex;
+            align-items: center;
+            padding: 8px 15px;
+            background-color: #1a1a1a;
+            color: #fff;
+        }
+        
+        .browser-dots {
+            display: flex;
+            margin-right: 15px;
+        }
+        
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 6px;
+        }
+        
+        .dot-red { background-color: #ff5f56; }
+        .dot-yellow { background-color: #ffbd2e; }
+        .dot-green { background-color: #27c93f; }
+        
+        .browser-address {
+            flex-grow: 1;
+            background-color: #333;
+            border-radius: 15px;
+            padding: 5px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 13px;
+        }
+        
+        .browser-content {
+            background-color: #fff;
+        }
+        
+        .site-content {
+            background-color: #f7f0e9;
+        }
+        
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #f7f0e9;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            font-weight: bold;
+            font-size: 18px;
+            color: #333;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-item {
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        
+        .nav-item.active {
+            background-color: #333;
+            color: white;
+        }
+        
+        .basket-btn {
+            border: 1px solid #333;
+            border-radius: 20px;
+            padding: 8px 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            display: flex;
+            padding: 50px;
+            background-color: #f7f0e9;
+        }
+        
+        .hero-content {
+            flex: 1;
+        }
+        
+        .hero-title-small {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .hero-title-large {
+            font-size: 72px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #333;
+            margin-bottom: 20px;
+            line-height: 1;
+        }
+        
+        .hero-description {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
+            max-width: 500px;
+            line-height: 1.5;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background-color: #333;
+            color: white;
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            border: 1px solid #333;
+            color: #333;
+        }
+        
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        
+        .hero-image .circle {
+            width: 300px;
+            height: 300px;
+            background-color: #333;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .hero-image img {
+            width: 60%;
+            height: auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Promo Bar */
+        .promo-bar {
+            background-color: #3c3129;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        
+        .promo-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+        }
+        
+        /* Categories */
+        .categories {
+            padding: 50px;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        
+        .category {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .category-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 15px;
+        }
+        
+        .category-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .category-title {
+            font-size: 16px;
+            color: #333;
+        }
+        
+        /* Product Sections */
+        .products-section {
+            padding: 30px 50px;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        
+        .product-card {
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .product-name {
+            font-size: 14px;
+            color: #333;
+        }
+        
+        .product-price {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #333;
+            color: white;
+            font-size: 12px;
+            padding: 5px 10px;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="browser-frame">
+        <div class="browser-top">
+            <div class="browser-dots">
+                <div class="dot dot-red"></div>
+                <div class="dot dot-yellow"></div>
+                <div class="dot dot-green"></div>
+            </div>
+            <div class="browser-address">
+                <span>Example | Daily UI</span>
+                <span></span>
+            </div>
+        </div>
+        <div class="browser-content">
+            <div class="site-content">
+                <div class="free-delivery-bar" style="background-color: #f7f0e9; text-align: center; padding: 8px 0; font-size: 14px;">
+                    Free Delivery in The UK
+                </div>
+                
+                <!-- Header -->
+                <header class="header">
+                    <div class="logo">
+                        <img src="https://coffee.alexflipnote.dev/random" alt="Logo" style="border-radius: 50%;">
+                        <span class="logo-text">Smokey Brand</span>
+                    </div>
+                    
+                    <div class="nav-menu">
+                        <div class="nav-item active">Coffee Hub</div>
+                        <div class="nav-item">Coffee Products</div>
+                        <div class="nav-item">About</div>
+                    </div>
+                    
+                    <div class="basket-btn">
+                        <span>Your Basket</span>
+                    </div>
+                </header>
+                
+                <!-- Hero Section -->
+                <section class="hero">
+                    <div class="hero-content">
+                        <h2 class="hero-title-small">The Smokey</h2>
+                        <h1 class="hero-title-large">COFFEE</h1>
+                        <p class="hero-description">Discover the Essence of Exquisite Coffee Beans. Each bean is meticulously sourced from the finest coffee-growing regions.</p>
+                        
+                        <div class="hero-buttons">
+                            <button class="btn btn-primary">
+                                <span>Shop Beans</span>
+                            </button>
+                            <button class="btn btn-secondary">
+                                <span>Our Cafes</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-image">
+                        <div class="circle">
+                            <img src="https://coffee.alexflipnote.dev/random" alt="Coffee Cup">
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Promo Bar -->
+                <div class="promo-bar">
+                    <div class="promo-item">
+                        <span>Get 10% Off Your First Order</span>
+                    </div>
+                    <div class="promo-item">
+                        <span>Free Delivery in The UK</span>
+                    </div>
+                    <div class="promo-item">
+                        <span>Taste For Everyone</span>
+                    </div>
+                </div>
+                
+                <!-- Categories -->
+                <div class="categories">
+                    <div class="category">
+                        <div class="category-image">
+                            <img src="https://coffee.alexflipnote.dev/random" alt="Iced Coffee">
+                        </div>
+                        <h3 class="category-title">Iced Coffee</h3>
+                    </div>
+                    
+                    <div class="category">
+                        <div class="category-image">
+                            <img src="https://coffee.alexflipnote.dev/random" alt="Coffee Cake">
+                        </div>
+                        <h3 class="category-title">Coffee Cake</h3>
+                    </div>
+                    
+                    <div class="category">
+                        <div class="category-image">
+                            <img src="https://coffee.alexflipnote.dev/random" alt="Croissant">
+                        </div>
+                        <h3 class="category-title">Croissant</h3>
+                    </div>
+                    
+                    <div class="category">
+                        <div class="category-image">
+                            <img src="https://coffee.alexflipnote.dev/random" alt="Coffee Beans">
+                        </div>
+                        <h3 class="category-title">Coffee Beans</h3>
+                    </div>
+                    
+                    <div class="category">
+                        <div class="category-image">
+                            <img src="https://coffee.alexflipnote.dev/random" alt="Coffee Shops">
+                        </div>
+                        <h3 class="category-title">Coffee Shops</h3>
+                    </div>
+                </div>
+                
+                <!-- Tang-Tastic Coffee -->
+                <div class="products-section">
+                    <h2 class="section-title">Tang-Tastic Coffee</h2>
+                    
+                    <div class="products-grid">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://coffee.alexflipnote.dev/random" alt="Vanilla Croissant">
+                            </div>
+                            <div class="product-info">
+                                <div class="product-name">Vanilla Croissant</div>
+                                <div class="product-price">£10.00</div>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://coffee.alexflipnote.dev/random" alt="Croissant Pistachio">
+                            </div>
+                            <div class="product-info">
+                                <div class="product-name">Croissant Pistachio</div>
+                                <div class="product-price">£10.00</div>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://coffee.alexflipnote.dev/random" alt="Croissant Chocolate">
+                            </div>
+                            <div class="product-info">
+                                <div class="product-name">Croissant Chocolate</div>
+                                <div class="product-price">£10.00</div>
+                            </div>
+                            <div class="product-badge">Maker's Pick</div>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://coffee.alexflipnote.dev/random" alt="Croissant Strawberry">
+                            </div>
+                            <div class="product-info">
+                                <div class="product-name">Croissant Strawberry</div>
+                                <div class="product-price">£10.00</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- To Go With Coffee -->
+                <div class="products-section">
+                    <h2 class="section-title">To Go With Coffee</h2>
+                    
+                    <div class="products-grid">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://coffee.alexflipnote.dev/random" alt="Vanilla Croissant">
+                            </div>
+                            <div class="product-info">
+                                <div class="product-name">Vanilla Croissant</div>
+                                <div class="product-price">£10.00</div>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://coffee.alexflipnote.dev/random" alt="Croissant Pistachio">
+                            </div>
+                            <div class="product-info">
+                                <div class="product-name">Croissant Pistachio</div>
+                                <div class="product-price">£10.00</div>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://coffee.alexflipnote.dev/random" alt="Croissant Chocolate">
+                            </div>
+                            <div class="product-info">
+                                <div class="product-name">Croissant Chocolate</div>
+                                <div class="product-price">£10.00</div>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://coffee.alexflipnote.dev/random" alt="Croissant Strawberry">
+                            </div>
+                            <div class="product-info">
+                                <div class="product-name">Croissant Strawberry</div>
+                                <div class="product-price">£10.00</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>
